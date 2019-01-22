@@ -1,0 +1,41 @@
+<h2>Users</h2>
+
+<ul class="list">
+  <li *ngFor="let user of users| async; let ix = index;" (click)="onSelect(user)"
+      [class.selected]="user === selectedUser">
+    <span>
+      <span class="badge">{{ix + 1}}</span> {{user.name}}
+    </span>
+    <button class="delete-button" (click)="deleteUser(user, $event)">Delete</button>
+  </li>
+</ul>
+
+<button (click)="addUser()">Add New User</button>
+
+<div *ngIf="addingUser">
+  <p>Type away! Press enter to add a user with the given name</p>
+  <input #userName placeholder="name" (keyup.enter)="save(userName.value)"/>
+
+</div>
+
+
+<div *ngIf="selectedUser">
+  <h2>
+    {{selectedUser.name | uppercase}} Groups
+  </h2>
+  <ul class="list">
+    <li *ngFor="let group of selectedUserGroups | async; let ix = index;">
+      <span>
+      <span class="badge">{{ix + 1}}</span> {{group.name}}
+    </span>
+      <button class="delete-button" (click)="removeFromGroup(group.id, selectedUser)">Remove From Group</button>
+    </li>
+  </ul>
+  <br/>
+  <br/>
+  <select #groupSelect>
+    <option *ngFor="let group of groups| async" value="{{group.id}}"> {{group.name}}</option>
+  </select>
+  <button (click)="assignUser(selectedUser, groupSelect.value)">assign To Group</button>
+</div>
+

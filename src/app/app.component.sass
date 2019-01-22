@@ -1,0 +1,73 @@
+header
+  position: absolute
+  width: 100%
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 35px 100px 0
+  animation: 1s fadein 0.5s forwards
+  opacity: 0
+  color: #fff
+  h2
+    font-family: "Quicksand", sans-serif
+
+nav
+  display: flex
+  margin-right: -15px
+  li
+    margin: 0 15px
+
+@keyframes fadein
+  100%
+    opacity: 1
+
+@media (max-width: 800px)
+  header
+    padding: 20px 50px
+    flex-direction: column
+    h2
+      margin-bottom: 15px
+
+.hero
+  position: relative
+  justify-content: center
+  text-align: center
+  min-height: 50vh
+  color: #fff
+  .background
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-size: cover
+    z-index: -1
+    background-color: #80a3db
+  h1
+    font: bold 60px "Open Sans", sans-serif
+    margin-bottom: 15px
+  h3
+    font: normal 28px "Open Sans", sans-serif
+    margin-bottom: 40px
+  a.btn
+    padding: 20px 46px
+
+.hero-content-area
+  opacity: 0
+  margin-top: 35px
+  animation: 1s slidefade 1s forwards
+
+@keyframes slidefade
+  100%
+    opacity: 1
+    margin: 0
+
+@media (max-width: 800px)
+  .hero
+    min-height: 250px
+    h1
+      font-size: 48px
+    h3
+      font-size: 24px
+    a.btn
+      padding: 15px 40px
